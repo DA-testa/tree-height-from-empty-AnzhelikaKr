@@ -31,14 +31,14 @@ def compute_height(n, parents):
 def main():
     
     # implement input form keyboard and from files
-    form=input()
+    a = input()
     #n=0
     #parents=[]
-    if 'i' in form.lower():
+    if "i" in a.lower():
         n=int(input())
         string=input().split()
         parents=np.array(string).astype(int)
-    elif 'f' in form.lower():
+    elif 'f' in a.lower(): 
         name=input()
         if 'a' not in name:
             with open("./test/"+name, mode='r',encoding="utf8") as fail:
