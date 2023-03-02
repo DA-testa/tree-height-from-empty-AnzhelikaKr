@@ -2,18 +2,51 @@
 
 import sys
 import threading
-import numpy
-
+import numpy as np
 
 def compute_height(n, parents):
     # Write this function
     max_height = 0
+    height=np.zeros(n).astype(int)
     # Your code here
+    
+    for i in range(n):
+        h=0
+        j=i
+        while(j!=-1):
+            if height[j]==0:
+                h+=1
+            else: 
+                h+=height[j]
+                break
+            j=parents[j]
+        height[i]=h
+        if h>max_height:
+            max_height=h
+
     return max_height
 
 
+
 def main():
+    
     # implement input form keyboard and from files
+    mode=input()
+    n=0
+    parents=[]
+    if 'i' in mode.lower():
+        n=int(input())
+        string=input().split()
+        parents=np.array(string).astype(int)
+    if 'f' in mode.lower():
+        name=input()
+        if 'a' not in name:
+            with open(name, mode='r') as fail:
+                n=int(fail.readline())
+                s=fail.readline()
+                parents=np.array(s.split()).astype(int)
+    res=compute_height(n,parents)
+    print(res)
     
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
@@ -21,7 +54,6 @@ def main():
     # input number of elements
     # input values in one variable, separate with space, split these values in an array
     # call the function and output it's result
-    pass
 
 # In Python, the default limit on recursion depth is rather low,
 # so raise it here for this problem. Note that to take advantage
