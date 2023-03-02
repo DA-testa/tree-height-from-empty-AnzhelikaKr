@@ -32,19 +32,22 @@ def main():
     
     # implement input form keyboard and from files
     mode=input()
-    n=0
-    parents=[]
+    #n=0
+    #parents=[]
     if 'i' in mode.lower():
         n=int(input())
         string=input().split()
         parents=np.array(string).astype(int)
-    if 'f' in mode.lower():
+    elif 'f' in mode.lower():
         name=input()
         if 'a' not in name:
-            with open(name, mode='r') as fail:
+            with open("./test/"+name, mode='r',encoding="utf8") as fail:
                 n=int(fail.readline())
                 s=fail.readline()
                 parents=np.array(s.split()).astype(int)
+    else: 
+        print("Wrong format")
+        return
     res=compute_height(n,parents)
     print(res)
     
