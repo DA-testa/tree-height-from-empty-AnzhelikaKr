@@ -5,11 +5,8 @@ import threading
 import numpy as np
 
 def compute_height(n, parents):
-    # Write this function
     max_height = 0
     height=np.zeros(n).astype(int)
-    # Your code here
-    
     for i in range(n):
         h=0
         j=i
@@ -32,8 +29,6 @@ def main():
     
     # implement input form keyboard and from files
     a = input()
-    #n=0
-    #parents=[]
     if "i" in a.lower():
         n=int(input())
         string=input().split()
